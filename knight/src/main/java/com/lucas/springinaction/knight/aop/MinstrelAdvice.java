@@ -15,8 +15,7 @@ import java.lang.reflect.Method;
  * @author: liucaisi
  * @date: 2017/11/30
  */
-public class MinstrelAdvice implements MethodBeforeAdvice {
-//, AfterReturningAdvice, MethodInterceptor {
+public class MinstrelAdvice implements MethodBeforeAdvice, AfterReturningAdvice, MethodInterceptor {
     @Override
     public void before(Method method, Object[] args, @Nullable Object target) throws Throwable {
         Knight knight = (Knight) target;
@@ -24,14 +23,14 @@ public class MinstrelAdvice implements MethodBeforeAdvice {
         logger.debug("[before] Brave " + knight.getName() + " did " + method.getName());
     }
 
-//    @Override
+    @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         Method method = invocation.getMethod();
         System.out.println("[invoke] " + method);
-        return null;
+        return invocation.proceed();
     }
 
-//    @Override
+    @Override
     public void afterReturning(@Nullable Object returnValue, Method method, Object[] args, @Nullable Object target) throws Throwable {
         Knight knight = (Knight) target;
         Logger logger = LoggerFactory.getLogger(target.getClass());
