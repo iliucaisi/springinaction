@@ -1,6 +1,5 @@
 package com.lucas.springinaction.knight.app;
 
-import com.lucas.springinaction.hello.service.GreetingService;
 import com.lucas.springinaction.knight.exception.QuestFailedException;
 import com.lucas.springinaction.knight.service.Knight;
 import org.slf4j.Logger;

@@ -11,6 +11,9 @@ public class KnightOfTheRoundTable implements Knight{
     private String name;
     private Quest quest;
 
+    public KnightOfTheRoundTable() {
+    }
+
     public KnightOfTheRoundTable(String name) {
         this.name = name;
     }

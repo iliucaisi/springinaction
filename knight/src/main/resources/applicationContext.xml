@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="knight" class="com.lucas.springinaction.knight.service.KnightOfTheRoundTable">
+        <constructor-arg value="Liu Caisi"/>
+        <property name="quest" ref="quest"/>
+    </bean>
+
+    <bean id="quest" class="com.lucas.springinaction.knight.service.HolyGrailQuest"/>
+
+    <bean id="minstrel" class="com.lucas.springinaction.knight.aop.Minstrel"/>
+
+    <bean id="minstrelService" class="com.lucas.springinaction.knight.aop.MinstrelAdvice"/>
+
+    <bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces" value="com.lucas.springinaction.knight.service.Knight"/>
+        <property name="target" ref="knight"/>
+        <property name="interceptorNames">
+            <list>
+                <value>minstrelService</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--<aop:config>-->
+        <!--<aop:aspect ref="minstrel">-->
+            <!--<aop:pointcut id="questPointCut" expression="execution(* *.embarkOnQuest(..)) and target(bean)"/>-->
+            <!--<aop:before method="singBefore" pointcut-ref="questPointCut" arg-names="bean"/>-->
+            <!--<aop:after method="singAfter" pointcut-ref="questPointCut" arg-names="bean"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+</beans>

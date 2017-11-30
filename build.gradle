@@ -23,6 +23,8 @@ subprojects {
         compile group: 'org.springframework', name: 'spring-aop', version: '5.0.1.RELEASE'
         compile group: 'org.springframework', name: 'spring-tx', version: '5.0.1.RELEASE'
 
+//        compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.13'
+
         compile group: 'xerces', name: 'xercesImpl', version: '2.11.0'
 
         compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
