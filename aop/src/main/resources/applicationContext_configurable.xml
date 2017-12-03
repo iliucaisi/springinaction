@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--<context:spring-configured/>-->
+    <aop:spring-configured/>
+    <bean id="pianist"
+          class="com.lucas.springinaction.aop.performer.Instrumentalist"
+          abstract="true" scope="prototype">
+        <property name="song" value="Chopsticks"/>
+        <property name="instrument">
+            <bean class="com.lucas.springinaction.aop.instrument.Piano"/>
+        </property>
+    </bean>
+    <bean id="instrument"
+          class="com.lucas.springinaction.aop.instrument.Piano"/>
+</beans>

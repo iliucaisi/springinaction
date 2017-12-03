@@ -1,7 +1,58 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="greetingService" class="com.lucas.springinaction.hello.service.GreetingServiceImpl">
-        <property name="greeting" value="Liu Caisi"/>
+
+    <alias name="duke" alias="dukeAlias"/>
+
+    <bean id="cymbal" class="com.lucas.springinaction.idol.instrument.Cymbal"/>
+    <bean id="guitar" class="com.lucas.springinaction.idol.instrument.Guitar"/>
+    <bean id="Harmonica"
+          class="com.lucas.springinaction.idol.instrument.Harmonica"/>
+    <bean id="saxophone"
+          class="com.lucas.springinaction.idol.instrument.Saxophone"/>
+    <bean id="sonnet29"
+          class="com.lucas.springinaction.idol.instrument.Sonnet29"/>
+
+    <bean id="duke"
+          class="com.lucas.springinaction.idol.performer.PoeticJuggler"
+          autowire="constructor">
+        <!--<constructor-arg ref="sonnet29"/>-->
+    </bean>
+    <bean id="kenny" parent="baseSaxophonist"/>
+    <bean id="hank" class="com.lucas.springinaction.idol.performer.OneManBand">
+        <property name="instruments">
+            <!--
+            <list>
+                <ref bean="guitar" />
+                <ref bean="saxophone" />
+                <ref bean="cymbal" />
+                <ref bean="cymbal" />
+            </list>
+            <props>
+                <prop key="GUITAR">STRUM STRUM STRUM</prop>
+                <prop key="CYMBAL">CRASH CRASH CRASH</prop>
+                <prop key="HARMONICA">HUM HUM HUM</prop>
+            </props>
+            -->
+            <map>
+                <entry key="GUITAR" value="STRUM STRUM STRUM ~~~"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="baseSaxophonist"
+          class="com.lucas.springinaction.idol.performer.Instrumentalist"
+          abstract="true">
+        <property name="song" value="Jingle Bells"/>
+        <property name="instrument" ref="saxophone"/>
+    </bean>
+
+    <bean id="idol" class="com.lucas.springinaction.idol.performer.Idol">
+        <property name="performers">
+            <list>
+                <ref bean="duke"/>
+                <ref bean="kenny"/>
+                <ref bean="hank"/>
+            </list>
+        </property>
     </bean>
 </beans>

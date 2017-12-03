@@ -1,0 +1,57 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="guitar" class="com.lucas.springinaction.aop.instrument.Guitar"/>
+    <bean id="saxophone"
+          class="com.lucas.springinaction.aop.instrument.Saxophone"/>
+    <bean id="magicBox"
+          class="com.lucas.springinaction.aop.instrument.MagicBoxImpl">
+        <replaced-method name="getContents" replacer="tigerReplacer"/>
+    </bean>
+    <bean id="tigerReplacer"
+          class="com.lucas.springinaction.aop.instrument.TigerReplacer"/>
+
+    <bean id="stevie"
+          class="com.lucas.springinaction.aop.performer.Instrumentalist">
+        <property name="instrument" ref="guitar"/>
+    </bean>
+    <bean id="kenny" parent="baseSaxophonist"/>
+    <bean id="david" parent="baseSaxophonist"/>
+    <bean id="frank" parent="baseSaxophonist">
+        <property name="song" value="Mary had a little lamb"/>
+    </bean>
+    <bean id="hary" class="com.lucas.springinaction.aop.performer.Magician">
+        <property name="magicBox" ref="magicBox"/>
+        <property name="magicWords" value="Bippity boppity boo"/>
+    </bean>
+    <bean id="miSteive"
+          class="com.lucas.springinaction.aop.performer.MethodInjectedInstrumentalist">
+        <lookup-method name="getInstrument" bean="guitar"/>
+        <property name="song" value="Greensleeves"/>
+    </bean>
+    <bean id="baseSaxophonist"
+          class="com.lucas.springinaction.aop.performer.Instrumentalist"
+          abstract="true">
+        <property name="song" value="Jingle Bells"/>
+        <property name="instrument" ref="saxophone"/>
+    </bean>
+    <bean id="pianist"
+          class="com.lucas.springinaction.aop.performer.Instrumentalist"
+          abstract="true">
+        <property name="song" value="Chopsticks"/>
+        <property name="instrument">
+                <bean class="com.lucas.springinaction.aop.instrument.Piano"/>
+        </property>
+    </bean>
+
+    <bean id="idol" class="com.lucas.springinaction.aop.performer.Idol">
+        <property name="performers">
+            <list>
+                <ref bean="hary"/>
+                <ref bean="miSteive"/>
+            </list>
+        </property>
+    </bean>
+</beans>

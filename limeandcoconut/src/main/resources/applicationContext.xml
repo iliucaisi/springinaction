@@ -1,0 +1,53 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/lang
+       http://www.springframework.org/schema/lang/spring-lang.xsd ">
+
+    <bean id="coconut"
+          class="com.lucas.springinaction.limeandcoconut.Coconut">
+        <property name="lime" ref="lime"/>
+    </bean>
+
+    <!--<lang:groovy id="lime" script-source="classpath:script/Lime.groovy"/>-->
+    <!--<lang:groovy id="lime"-->
+                 <!--script-source="classpath:script/LimeWithTextProperty.groovy">-->
+        <!--<lang:property name="text" value="Called the doctor woke him up!"/>-->
+    <!--</lang:groovy>-->
+    <!--<lang:groovy id="lime">-->
+        <!--<lang:inline-script><![CDATA[-->
+            <!--class Lime implements com.lucas.springinaction.limeandcoconut.Lime {-->
+                <!--@Override-->
+                <!--void drink() {-->
+                    <!--println "Called the doctor woke him up!"-->
+                <!--}-->
+            <!--}-->
+            <!--]]>-->
+        <!--</lang:inline-script>-->
+    <!--</lang:groovy>-->
+
+    <!--<lang:std id="lime" script-source = "classpath:script/Lime.rb"-->
+                <!--script-interfaces="com.lucas.springinaction.limeandcoconut.Lime"/>-->
+    <!--<lang:std id="lime" script-source = "classpath:script/Lime.rb"-->
+                <!--script-interfaces="com.lucas.springinaction.limeandcoconut.Lime" refresh-check-delay="5000"/>-->
+
+    <!--<lang:bsh id="lime" script-source="classpath:script/Lime.bsh"-->
+              <!--script-interfaces="com.lucas.springinaction.limeandcoconut.Lime"/>-->
+    <!--<lang:bsh id="lime" script-source="classpath:script/Lime.bsh"-->
+              <!--script-interfaces="com.lucas.springinaction.limeandcoconut.Lime" refresh-check-delay="5000"/>-->
+    <lang:bsh id="lime"
+              script-interfaces="com.lucas.springinaction.limeandcoconut.Lime">
+        <lang:inline-script><![CDATA[
+            void drink() {
+                 System.out.println("Called the doctor woke him up!");
+            }
+        ]]>
+        </lang:inline-script>
+    </lang:bsh>
+
+</beans>

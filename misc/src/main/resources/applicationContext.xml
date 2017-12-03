@@ -1,0 +1,13 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.lucas.springinaction.misc.postprocessor.Fuddifier"/>
+    <bean id="bugs" class="com.lucas.springinaction.misc.postprocessor.Rabbit">
+        <property name="description" value="That rascally rabbit!"/>
+    </bean>
+    <bean id="beanCounter"
+          class="com.lucas.springinaction.misc.postprocessor.BeanCounter"/>
+
+</beans>

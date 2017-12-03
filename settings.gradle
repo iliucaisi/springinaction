@@ -2,4 +2,7 @@ rootProject.name = 'springinaction'
 include 'hello'
 include 'knight'
 include 'idol'
+include 'limeandcoconut'
+include 'aop'
+include 'misc'
 
