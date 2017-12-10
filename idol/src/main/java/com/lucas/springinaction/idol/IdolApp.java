@@ -2,6 +2,7 @@ package com.lucas.springinaction.idol;
 
 import com.lucas.springinaction.idol.exception.PerformanceException;
 import com.lucas.springinaction.idol.performer.Idol;
+import com.lucas.springinaction.idol.performer.TalentCompetition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,7 +15,7 @@ public class IdolApp {
     public static void main(String[] args) throws PerformanceException {
         ApplicationContext context = new ClassPathXmlApplicationContext
                 ("applicationContext.xml");
-        Idol.TalentCompetition competition = (Idol.TalentCompetition) context.getBean("idol");
+        TalentCompetition competition = (TalentCompetition) context.getBean("idol");
         competition.run();
     }
 }

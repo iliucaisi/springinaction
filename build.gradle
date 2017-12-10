@@ -2,6 +2,7 @@ group 'com.lucas'
 version '1.0'
 
 allprojects {
+    apply plugin: 'jdepend'
     apply plugin: 'java'
 
     sourceCompatibility = 1.8
