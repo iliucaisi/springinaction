@@ -1,0 +1,70 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--演员-->
+    <bean id="bo"
+          class="com.lucas.springinaction.idolaop.performer.Singer">
+        <constructor-arg value="Bo Bice"/>
+        <property name="song" value="Sweet Home Alabama"/>
+    </bean>
+    <bean id="william"
+          class="com.lucas.springinaction.idolaop.performer.Singer">
+        <constructor-arg value="William Hung" index="0"/>
+    </bean>
+    <bean id="carrie"
+          class="com.lucas.springinaction.idolaop.performer.Singer">
+        <constructor-arg value="Carrie Underwood"/>
+        <property name="song" value="Jesus Take the Wheel"/>
+    </bean>
+
+    <!--观众-->
+    <bean id="audience"
+          class="com.lucas.springinaction.idolaop.audience.Audience"/>
+    <aop:config>
+        <aop:pointcut id="performance" expression="execution(* *.perform(..))"/>
+        <aop:aspect ref="audience">
+            <aop:around method="watchPerformance" pointcut-ref="performance"/>
+            <aop:before method="takeSeats" pointcut-ref="performance"/>
+            <aop:before method="turnOffCellPhones" pointcut-ref="performance"/>
+            <aop:after-returning method="applaud" pointcut-ref="performance"/>
+            <aop:after-throwing method="demandRefund"
+                                pointcut-ref="performance"/>
+        </aop:aspect>
+    </aop:config>
+    <bean id="audienceAdvice"
+          class="com.lucas.springinaction.idolaop.audience.AudienceAroundAdvice">
+        <property name="audience" ref="audience"/>
+    </bean>
+
+    <!--评委-->
+    <bean id="paula"
+          class="com.lucas.springinaction.idolaop.judge.NiceJudge"/>
+    <aop:config>
+        <aop:aspect ref="paula">
+            <aop:after method="greetPerformer"
+                       pointcut="execution(* *.perform(..))"/>
+            <aop:after-returning method="saySomethingNice"
+                                 pointcut="execution(* *.perform(..))"/>
+            <aop:after-throwing method="saySomethingNiceAnyway"
+                                pointcut="execution(* *.perform(..))"/>
+        </aop:aspect>
+    </aop:config>
+    <bean id="randy"
+          class="com.lucas.springinaction.idolaop.judge.ObjectiveJudge"/>
+    <!--<aop:aspectj-autoproxy/>-->
+    <!--<bean class="com.lucas.springinaction.idolaop.judge.JudgeAspect"-->
+          <!--factory-method="aspectOf">-->
+        <!--<property name="criticismEngine" ref="criticismEngine"/>-->
+    <!--</bean>-->
+    <!--<bean id="criticismEngine"-->
+          <!--class="com.lucas.springinaction.idolaop.audience.CriticismEngineImpl">-->
+        <!--<property name="criticismPool">-->
+            <!--<list>-->
+                <!--<value>I'm not being rude, but that was appalling.</value>-->
+                <!--<value>You may be the least talent person in this show.</value>-->
+                <!--<value>Do everyone a favor and keep your day job.</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+</beans>
