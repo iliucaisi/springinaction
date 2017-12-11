@@ -5,4 +5,5 @@ include 'idol'
 include 'limeandcoconut'
 include 'aop'
 include 'misc'
+include 'spittr'
 
