@@ -34,7 +34,8 @@ public class JdbcSpittleRepository implements SpittleRepository{
     @Override
     public List<Spittle> findSpittles(long max, int count) {
         return jdbcOperations.query("select id, message, created_at, longitude, latitude from spittle where id < ? " +
-                "order by created_at limit 20", new SpittleRowMapper(), max);
+                "order by created_at limit ?", new SpittleRowMapper(), max,
+                count);
     }
 
     @Override
