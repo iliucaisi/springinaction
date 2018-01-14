@@ -25,6 +25,7 @@ subprojects {
         compile group: 'org.springframework', name: 'spring-tx', version: '5.0.1.RELEASE'
         compile group: 'org.springframework', name: 'spring-aspects', version: '5.0.1.RELEASE'
 
+        compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.5.Final'
         compile group: 'xerces', name: 'xercesImpl', version: '2.11.0'
 
         compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
@@ -33,9 +34,9 @@ subprojects {
         compile group: 'org.apache.logging.log4j', name: 'log4j-jcl', version: '2.10.0'
 //        compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
 
+        compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
         compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
-
-//        compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.5.Final'
+        compile group: 'com.google.guava', name: 'guava', version: '23.0'
 
         testCompile group: 'org.springframework', name: 'spring-test', version: '5.0.1.RELEASE'
         testCompile group: 'junit', name: 'junit', version: '4.12'

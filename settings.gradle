@@ -7,4 +7,5 @@ include 'aop'
 include 'misc'
 include 'idolaop'
 include 'spittr'
+include 'spittr.thymeleaf'
 
