@@ -8,4 +8,5 @@ include 'misc'
 include 'idolaop'
 include 'spittr'
 include 'spittr.thymeleaf'
+include 'spittr.tiles'
 

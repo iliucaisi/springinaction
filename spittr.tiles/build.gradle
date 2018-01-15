@@ -4,17 +4,20 @@ version '1.0'
 apply plugin: 'war'
 apply plugin: 'jetty'
 
-war {
-    baseName = 'spittr'
-}
+//war {
+//    baseName = 'spittr.tiles'
+//}
 
 dependencies {
+    // servlet与jsp
     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'
     compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1'
     compile group: 'javax.servlet', name: 'jstl', version: '1.2'
 
-//    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.2'
+    // tiles
+    compile group: 'org.apache.tiles', name: 'tiles-core', version: '3.0.8'
+    compile group: 'org.apache.tiles', name: 'tiles-jsp', version: '3.0.8'
 
+    // 数据库
     compile group: 'com.h2database', name: 'h2', version: '1.4.196'
 }
-
