@@ -3,10 +3,15 @@ version '1.0'
 
 apply plugin: 'war'
 apply plugin: 'jetty'
+//apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
 
-//war {
-//    baseName = 'spittr.tiles'
-//}
+war {
+    baseName = 'spittr.tiles'
+}
+
+jettyRun {
+
+}
 
 dependencies {
     // servlet与jsp
@@ -20,4 +25,8 @@ dependencies {
 
     // 数据库
     compile group: 'com.h2database', name: 'h2', version: '1.4.196'
+
+    // jetty
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.8.v20171121'
 }
+
