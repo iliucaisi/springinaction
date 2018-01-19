@@ -23,15 +23,12 @@ subprojects {
         compile group: 'org.springframework', name: 'spring-webmvc', version: '5.0.1.RELEASE'
         compile group: 'org.springframework', name: 'spring-jdbc', version: '5.0.1.RELEASE'
         compile group: 'org.springframework', name: 'spring-aop', version: '5.0.1.RELEASE'
-        compile group: 'org.springframework', name: 'spring-tx', version: '5.0.1.RELEASE'
+        compile group: 'org.springwork', name: 'spring-tx', version: '5.0.1.RELEASE'
         compile group: 'org.springframework', name: 'spring-aspects', version: '5.0.1.RELEASE'
 
         // 日志
-        compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
-        compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
-        compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.10.0'
-        compile group: 'org.apache.logging.log4j', name: 'log4j-jcl', version: '2.10.0'
-//        compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+        // 注意与jetty冲突
+//        compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
 
         // 工具
         compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.5.Final'

@@ -2,7 +2,6 @@ group 'com.lucas'
 version '1.0'
 
 apply plugin: 'war'
-apply plugin: 'jetty'
 
 war {
     baseName = 'spittr'
