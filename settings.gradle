@@ -9,4 +9,5 @@ include 'idolaop'
 include 'spittr'
 include 'spittr.thymeleaf'
 include 'spittr.tiles'
+include 'pizza'
 

@@ -1,0 +1,12 @@
+group 'com.lucas'
+version '1.0'
+
+dependencies {
+    compile group: 'org.springframework.webflow', name: 'spring-webflow', version: '2.4.7.RELEASE'
+    compile group: 'org.springframework.webflow', name: 'spring-binding', version: '2.4.7.RELEASE'
+
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'
+    compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1'
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    compile group: 'org.apache.tomcat', name: 'tomcat-el-api', version: '9.0.2'
+}

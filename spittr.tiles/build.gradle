@@ -11,11 +11,9 @@ version '1.0'
 //apply plugin: 'jetty'
 //apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
 
-
 repositories {
     jcenter()
 }
-
 
 war {
     baseName = 'spittr.tiles'
@@ -35,9 +33,10 @@ dependencies {
     compile group: 'com.h2database', name: 'h2', version: '1.4.196'
 
     // jetty
-    compile('org.eclipse.jetty.aggregate:jetty-all:version:9.4.8.v20171121:pom') {
-        exclude group: 'org.apache.logging', module 'log4j-core'
-    }
+//    compile('org.eclipse.jetty.aggregate:jetty-all:version:9.4.8.v20171121:pom')
+//            {
+//        exclude group: 'org.apache.logging', module 'log4j-core'
+//    }
 //    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.8.v20171121'
 //    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.8.v20171121'
 //    compile group: 'org.eclipse.jetty', name: 'jetty-servlets', version: '9.4.8.v20171121'

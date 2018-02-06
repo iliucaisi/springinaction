@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:flow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/webflow-config
+       http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd">
+
+    <!--context-->
+    <context:component-scan base-package="com.lucas.springinaction.pizza" />
+
+    <!--mvc-->
+    <mvc:annotation-driven />
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--flow-->
+    <flow:flow-executor id="flowExecutor"/>
+    <flow:flow-registry id="flowDefinitionRegistry" base-path="/flows">
+        <flow:flow-location-pattern value="/**/*-flow.xml"></flow:flow-location-pattern>
+    </flow:flow-registry>
+    <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+        <property name="flowRegistry" ref="flowDefinitionRegistry"/>
+    </bean>
+    <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+        <property name="flowExecutor" ref="flowExecutor"/>
+    </bean>
+
+    <!--service-->
+    <bean id="pricingEngine" class="com.lucas.springinaction.pizza.service.PricingEngineImpl"/>
+    <bean id="customerService" class="com.lucas.springinaction.pizza.service.CustomerServiceImpl"/>
+    <bean id="paymentProcessor" class="com.lucas.springinaction.pizza.service.PaymentProcessorImpl"/>
+    <bean id="orderService" class="com.lucas.springinaction.pizza.service.OrderServiceImpl"/>
+
+    <!--domain-->
+    <context:spring-configured/>
+    <bean id="order" class="com.lucas.springinaction.pizza.domain.Order" abstract="true">
+        <property name="pricingEngine" ref="pricingEngine"/>
+    </bean>
+</beans>
