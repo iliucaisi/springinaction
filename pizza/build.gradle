@@ -1,6 +1,10 @@
 group 'com.lucas'
 version '1.0'
 
+farm {
+    webapp project
+}
+
 dependencies {
     compile group: 'org.springframework.webflow', name: 'spring-webflow', version: '2.4.7.RELEASE'
     compile group: 'org.springframework.webflow', name: 'spring-binding', version: '2.4.7.RELEASE'

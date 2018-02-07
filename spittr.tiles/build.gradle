@@ -1,19 +1,5 @@
-plugins {
-    id 'java'
-    id 'war'
-    id 'org.akhikhl.gretty' version '1.4.2'
-}
-
 group 'com.lucas'
 version '1.0'
-
-//apply plugin: 'war'
-//apply plugin: 'jetty'
-//apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
-
-repositories {
-    jcenter()
-}
 
 war {
     baseName = 'spittr.tiles'

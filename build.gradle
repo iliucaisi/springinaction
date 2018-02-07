@@ -1,19 +1,38 @@
 group 'com.lucas'
 version '1.0'
 
+buildscript {
+    repositories {
+        maven {
+            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/'
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:2.0.1-SNAPSHOT'
+    }
+}
+
 allprojects {
     apply plugin: 'jdepend'
     apply plugin: 'java'
+    apply plugin: 'war'
+    apply plugin: 'org.akhikhl.gretty'
 
     sourceCompatibility = 1.8
 
     repositories {
         mavenLocal()
         mavenCentral()
+        maven {
+            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/'
+        }
+        jcenter()
     }
 }
 
 subprojects {
+    apply plugin: 'org.akhikhl.gretty'
     dependencies {
         // spring
         compile group: 'org.springframework', name: 'spring-context', version: '5.0.1.RELEASE'
@@ -27,8 +46,12 @@ subprojects {
         compile group: 'org.springframework', name: 'spring-aspects', version: '5.0.1.RELEASE'
 
         // 日志
-        // 注意与jetty冲突
-//        compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
+        // 注意slf4j与jetty冲突
+        compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8'
+//        providedCompile('org.apache.logging.log4j:log4j-slf4j-impl:2.10.0') {
+//            exclude group: 'org.slf4j', module: 'slf4j-api'
+//        }
+//        compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
 
         // 工具
         compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.5.Final'
@@ -44,4 +67,17 @@ subprojects {
     }
 }
 
+farm {
+    include 'hello'
+    include 'knight'
+    include 'idol'
+    include 'limeandcoconut'
+    include 'aop'
+    include 'misc'
+    include 'idolaop'
+    include 'spittr'
+    include 'spittr.thymeleaf'
+    include 'spittr.tiles'
+    include 'pizza'
+}
 

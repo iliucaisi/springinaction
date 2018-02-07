@@ -7,7 +7,7 @@
     <!--Customer-->
     <subflow-state id="customer" subflow="pizza/customer">
         <input name="order" value="order"/>
-        <transition on="customReady" to="order"/>
+        <transition on="customerReady" to="order"/>
     </subflow-state>
 
     <!--Order-->
