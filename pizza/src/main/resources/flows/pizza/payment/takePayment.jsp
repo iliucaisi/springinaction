@@ -14,7 +14,7 @@
     </script>
 
     <h2>Take Payment</h2>
-    <form:form commandName="paymentDetails" name="paymentForm">
+    <form:form modelAttribute="paymentDetails" name="paymentForm">
         <input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
         <form:radiobutton path="paymentType" value="CASH" label="Cash (taken at delivery)"
                           onclick="hideCreditCardField()"/><br/>
