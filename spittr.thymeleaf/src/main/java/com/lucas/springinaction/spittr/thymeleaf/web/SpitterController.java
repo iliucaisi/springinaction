@@ -2,6 +2,7 @@ package com.lucas.springinaction.spittr.thymeleaf.web;
 
 import com.lucas.springinaction.spittr.thymeleaf.dao.SpitterRepository;
 import com.lucas.springinaction.spittr.thymeleaf.po.Spitter;
+import com.lucas.springinaction.spittr.thymeleaf.vo.LoginForm;
 import com.lucas.springinaction.spittr.thymeleaf.vo.RegisterForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,6 +47,20 @@ public class SpitterController {
 
         spitterRepository.save(registerForm.toSpitter());
         return "redirect:/spitter/" + registerForm.getUsername();
+    }
+
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public String login(@Valid LoginForm loginForm, BindingResult bindingResult)  {
+        if (bindingResult.hasErrors()) {
+            return "login";
+        }
+        return "redirect:/spitter" + loginForm.getUsername();
+    }
+
+    @RequestMapping(value = "/me", method = RequestMethod.GET)
+    public String me() {
+        System.out.println("ME ME ME ME ME ME ME ME ME ME ME");
+        return "home";
     }
 
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)

@@ -1,13 +1,17 @@
 group 'com.lucas'
 version '1.0'
 
-apply plugin: 'war'
-
-war {
-    baseName = 'spittr.thymeleaf'
+farm {
+    webapp project
 }
 
 dependencies {
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.0.1.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.0.1.RELEASE'
+    compile group: 'org.springframework.ldap', name: 'spring-ldap-core', version: '2.3.2.RELEASE'
+
+    compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4', version: '3.0.2.RELEASE'
+
     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'
     compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.9.RELEASE'
     compile group: 'org.thymeleaf', name: 'thymeleaf-spring5', version: '3.0.9.RELEASE'

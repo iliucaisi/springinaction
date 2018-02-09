@@ -16,13 +16,16 @@ import java.util.Date;
 @Getter
 @Setter
 @AllArgsConstructor
-@RequiredArgsConstructor(staticName = "of")
 public class Spittle {
     private Long id;
     private final String message;
     private final Date time;
     private Double longitude;
     private Double latitude;
+
+    public Spittle(String message, Date time) {
+        this(null, message, time, null, null);
+    }
 
     @Override
     public boolean equals(Object that) {
