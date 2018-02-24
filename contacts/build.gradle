@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE")
+    }
+}
+
+apply plugin: 'application'
+mainClassName = 'com.lucas.springinaction.contacts.Application'
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+configurations {
+    compile.exclude group: 'ch.qos.logback', module: 'logback-classic'
+    compile.exclude group: 'ch.qos.logback', module: 'logback-core'
+}
+dependencies {
+    // spring-boot
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.10.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '1.5.10.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '1.5.10.RELEASE'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.1'
+
+    compile group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'
+
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.0'
+
+    // h2
+    compile group: 'com.h2database', name: 'h2', version: '1.4.196'
+
+}
+
+

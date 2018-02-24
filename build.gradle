@@ -24,10 +24,9 @@ allprojects {
     repositories {
         mavenLocal()
         mavenCentral()
-        maven {
-            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/'
-        }
+        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
         jcenter()
+        maven { url "http://repo.spring.io/libs-snapshot" }
     }
 }
 
@@ -36,6 +35,7 @@ subprojects {
     dependencies {
         // spring
         compile group: 'org.springframework', name: 'spring-context', version: '5.0.1.RELEASE'
+        compile group: 'org.springframework', name: 'spring-context-support', version: '5.0.1.RELEASE'
         compile group: 'org.springframework', name: 'spring-core', version: '5.0.1.RELEASE'
         compile group: 'org.springframework', name: 'spring-beans', version: '5.0.1.RELEASE'
         compile group: 'org.springframework', name: 'spring-web', version: '5.0.1.RELEASE'
@@ -47,11 +47,11 @@ subprojects {
 
         // 日志
         // 注意slf4j与jetty冲突
-        compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8'
+        compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.7'
 //        providedCompile('org.apache.logging.log4j:log4j-slf4j-impl:2.10.0') {
 //            exclude group: 'org.slf4j', module: 'slf4j-api'
 //        }
-//        compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+        compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
 
         // 工具
         compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.5.Final'
@@ -79,5 +79,7 @@ farm {
     include 'spittr.thymeleaf'
     include 'spittr.tiles'
     include 'pizza'
+    include 'contacts'
+    include 'STOMP'
 }
 
